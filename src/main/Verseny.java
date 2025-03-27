@@ -10,13 +10,11 @@ public class Verseny {
     Csiga kek;
     Csiga piros;
     Csiga zold;
-    private String haladas;
 
     public Verseny() {
         kek = new Csiga("kék");
         piros = new Csiga("piros");
         zold = new Csiga("zöld");
-        this.haladas = haladas;
 
     }
 
@@ -35,6 +33,28 @@ public class Verseny {
         System.out.println("Kire fogad?:");
         String fogadott = sc.nextLine();
         return fogadott;
+    }
+
+    public String nyertes() {
+        String gyoztes = "";
+        if (kek.getMegtettTav() > piros.getMegtettTav() && kek.getMegtettTav() > zold.getMegtettTav()) {
+            gyoztes = "kék";
+        } else if (piros.getMegtettTav() > kek.getMegtettTav() && piros.getMegtettTav() > zold.getMegtettTav()) {
+            gyoztes = "piros";
+        } else if (zold.getMegtettTav() > piros.getMegtettTav() && zold.getMegtettTav() > kek.getMegtettTav()) {
+            gyoztes = "kék";
+        }
+        return gyoztes;
+    }
+
+    public String fogadasEredmenye() {
+        String eredmenyHirdetes = "";
+        if (this.nyertes().equals(this.fogadas())) {
+            eredmenyHirdetes = "Gratulálunk, a %s nyert, így Ön megnyerte a fogadást!".formatted(this.nyertes());
+        } else {
+            eredmenyHirdetes = "Sajnáljuk, a %s nyert, Ön elvesztette a fogadást.".formatted(this.nyertes());
+        }
+        return eredmenyHirdetes;
     }
 
 }
