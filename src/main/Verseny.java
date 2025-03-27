@@ -10,11 +10,13 @@ public class Verseny {
     Csiga kek;
     Csiga piros;
     Csiga zold;
+    private String haladas;
 
     public Verseny() {
         kek = new Csiga("kék");
         piros = new Csiga("piros");
         zold = new Csiga("zöld");
+        this.haladas = haladas;
 
     }
 
@@ -27,6 +29,12 @@ public class Verseny {
         } else if (sorsolas >= 41 && sorsolas <= 60) {
             zold.setGyors();
         }
+    }
+
+    public String fogadas() {
+        System.out.println("Kire fogad?:");
+        String fogadott = sc.nextLine();
+        return fogadott;
     }
 
 }
